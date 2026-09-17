@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Daniel Bondar
+ * Copyright (c) 2026 Daniel Bondar
  * SPDX-License-Identifier: Apache-2.0
  */
 

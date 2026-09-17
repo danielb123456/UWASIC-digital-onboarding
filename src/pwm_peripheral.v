@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2024 Damir Gazizullin
+ * Copyright (c) 2026 Damir Gazizullin Daniel Bondar
  * SPDX-License-Identifier: Apache-2.0
  */
 
