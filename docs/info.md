@@ -9,12 +9,32 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-Explain how your project works
+This project implements an SPI-controlled PWM peripheral, receiving SCLK, COPI, and nCS signals from an SPI controller.
+
+Each SPI transaction contains 16 bits:
+- 1 read/write bit (only writes are supported)
+- 7 address bits (the register address to write to)
+- 8 data bits (the value to write to the register)
+
+The bits are received through COPI using a shift register and are then decoded to update the right register.
+
+The following register map controls the output and PWM behavior:
+- `0x00` = Enable outputs `uo_out[7:0]`
+- `0x01` = Enable outputs `uio_out[7:0]`
+- `0x02` = Enable PWM on `uo_out[7:0]`
+- `0x03` = Enable PWM on `uio_out[7:0]`
+- `0x04` = Set PWM duty cycle
 
 ## How to test
 
-Explain how to use your project
+This project uses Cocotb tests. They can be executed by running the following command in the `test/` directory:
+
+```bash
+make -B
+```
+
+The actual tests are defined in test.py.
 
 ## External hardware
 
-List external hardware used in your project (e.g. PMOD, LED display, etc), if any
+No external hardware is required.
