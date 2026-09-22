@@ -223,7 +223,7 @@ async def test_pwm_duty(dut):
 
     # PWM enable test (50% duty cycle without enabling the output)
     await send_spi_transaction(dut, 1, 0x02, 0x01)
-    await send_spi_transaction(dut, 1, 0x04, 0x80) # 0x00 = 0/256 = 0%
+    await send_spi_transaction(dut, 1, 0x04, 0x80) # 0x80 = 128/256 = 50%
 
     # wait for the PWM to settle for at least one complete period
     await ClockCycles(dut.clk, 4000)
@@ -280,5 +280,4 @@ async def test_pwm_duty(dut):
             "Output changed during the 100% duty-cycle test (error)."
         )
 
-    # Write your test here
     dut._log.info("PWM Duty Cycle test completed successfully")

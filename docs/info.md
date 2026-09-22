@@ -12,13 +12,13 @@ You can also include images in this folder and reference them in the markdown. E
 This project implements an SPI-controlled PWM peripheral, receiving SCLK, COPI, and nCS signals from an SPI controller.
 
 Each SPI transaction contains 16 bits:
-- 1 read/write bit (only writes are supported)
+- 1 read/write bit (only write transactions are supported, read ones are ignored)
 - 7 address bits (the register address to write to)
 - 8 data bits (the value to write to the register)
 
 The bits are received through COPI using a shift register and are then decoded to update the right register.
 
-The following register map controls the output and PWM behavior:
+Also, the following register map controls the output and PWM behavior:
 - `0x00` = Enable outputs `uo_out[7:0]`
 - `0x01` = Enable outputs `uio_out[7:0]`
 - `0x02` = Enable PWM on `uo_out[7:0]`
